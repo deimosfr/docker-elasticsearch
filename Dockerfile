@@ -13,7 +13,7 @@ ENV GPG_KEY "46095ACC8548582C1A2699A9D27D666CD88E42B4"
 
 # Install Elasticsearch.
 RUN apk add --no-cache --update bash ca-certificates su-exec util-linux
-RUN apk add --no-cache -t .build-deps wget gnupg openssl curl \
+RUN apk add --no-cache -t .build-deps gnupg openssl curl \
   && cd /tmp \
   && echo "===> Install Elasticsearch..." \
   && wget -O elasticsearch.tar.gz "$ES_TARBAL"; \
