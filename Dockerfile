@@ -16,9 +16,9 @@ RUN apk add --no-cache --update bash ca-certificates su-exec util-linux
 RUN apk add --no-cache -t .build-deps gnupg openssl curl \
   && cd /tmp \
   && echo "===> Install Elasticsearch..." \
-  && wget -O elasticsearch.tar.gz "$ES_TARBAL"; \
+  && curl -o elasticsearch.tar.gz -Lskj "$ES_TARBAL"; \
 	if [ "$ES_TARBALL_ASC" ]; then \
-		wget -O elasticsearch.tar.gz.asc "$ES_TARBALL_ASC"; \
+		curl -o elasticsearch.tar.gz.asc -Lskj "$ES_TARBALL_ASC"; \
 		export GNUPGHOME="$(mktemp -d)"; \
 		gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$GPG_KEY"; \
 		gpg --batch --verify elasticsearch.tar.gz.asc elasticsearch.tar.gz; \
